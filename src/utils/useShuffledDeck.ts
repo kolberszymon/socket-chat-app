@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
-export const useDeck = (): Array<Card> => {
-    return useMemo((): Array<Card> => {
+export const useDeck = (): Deck => {
+    return useMemo((): Deck => {
         return [
             ...Array(10).fill({ label: 'A', score: 2 }),
             ...Array(2).fill({ label: 'B', score: 8 }),

@@ -5,19 +5,16 @@ const withPrivateRoute = (Component) => {
     return () => {
         const router = useRouter();
 
-        const [component, setComponent] = useState(null);
-
         useEffect(() => {
-            if (localStorage.getItem('username')) {
-                setComponent(Component);
-
-                return;
+            if (typeof window != 'undefined') {
+                const username = localStorage.getItem('username');
+                if (username === null) {
+                    router.push('/');
+                }
             }
-
-            router.push('/');
         }, []);
 
-        return component;
+        return <Component />;
     };
 }
 
