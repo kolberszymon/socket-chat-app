@@ -6,8 +6,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>NextJS TailwindCSS TypeScript Starter</title>
+        <title>The Game</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="shortcut icon" href="favicon.svg" />
       </Head>
       <Component {...pageProps} />
     </>

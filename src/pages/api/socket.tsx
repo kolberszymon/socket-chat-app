@@ -13,7 +13,7 @@ export default function SocketHandler(req, res) {
   res.socket.server.io = io;
 
   const onConnection = (socket) => {
-    console.log('Connected:', socket.id);
+    //console.log('Connected:', socket.id);
     messageHandler(io, socket);
   };
 

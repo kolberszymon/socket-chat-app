@@ -4,3 +4,53 @@
 /* Your own custom component styles */
 
 @import 'tailwindcss/utilities';
+
+/* Letter Card */
+:root {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    background-color: #242424;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+@font-face {
+    font-family: 'Celtasmigoria';
+    src: url(../assets/Celtasmigoria.ttf);
+}
+
+@font-face {
+    font-family: 'Censcbk';
+    src: url(../assets/CENSCBK.TTF);
+}
+
+.card-center-letter {
+    font-size: 3.5rem;
+    font-family: Celtasmigoria;
+}
+
+.card-center-letter--smaller {
+    font-size: 2.8rem;
+}
+
+.card-center-letter--smallest {
+    font-size: 2.5rem;
+}
+
+.card-letter-font {
+    font-family: Censcbk, serif;
+}
+
+.closed-card {
+    background: url(../assets/lpds.svg);
+    height: 100%;
+    background-position: center;
+    background-size: 1rem;
+}

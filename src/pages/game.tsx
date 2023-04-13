@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import { getRandomCart } from "../utils/cardsList"
+import { getRandomCard } from "../utils/cardsList"
+import LetterCard from "../components/LetterCard";
 
 let socket;
 
@@ -15,9 +16,9 @@ export default function CardGame() {
   }, []);
 
   function randomCards() {
-    const hand1 = getRandomCart(3);
-    const hand2 = getRandomCart(3);
-    const table = getRandomCart(3);
+    const hand1 = getRandomCard(3);
+    const hand2 = getRandomCard(3);
+    const table = getRandomCard(3);
     setPlayer1Hand(hand1);
     setPlayer2Hand(hand2);
     setTable(table);
@@ -30,11 +31,11 @@ export default function CardGame() {
 
     socket = io();
 
-    socket.on("inGameState", ({ player1Hand, player2Hand, table }) => {
+    socket.on("inGameState", ({ player1Hand, player2Hand, table, id }) => {
       setPlayer1Hand(player1Hand);
       setPlayer2Hand(player2Hand);
       setTable(table);
-      console.log('in', { player1Hand, player2Hand, table });
+      console.log('in', { player1Hand, player2Hand, table, id });
     });
   };
 
@@ -82,58 +83,55 @@ export default function CardGame() {
   };
 
   return (
-    <div className="flex flex-col items-center p-4 mx-auto min-h-screen justify-center flex-wrap bg-purple-100">
-      <h1 className="text-center">Game</h1>
+    <div className="flex flex-col items-center p-4 mx-auto min-h-screen justify-center flex-wrap">
+      <h1 className="text-center text-white text-2xl text-bold mb-2">Game</h1>
       {!start && (<button className="bg-white rounded-md px-4 py-2 text-xl" onClick={() => {setStart(true);randomCards()}}>Start</button>)}
       {start && (
-        <div className="desk border container mx-auto p-2 uppercase font-bold text-white">
+        <div className="desk border container mx-auto p-2">
           <div
-            className="hand flex flex-row border-2 border-cyan-500 p-2"
+            className="hand flex flex-row border border-cyan-500 p-2"
             onDrop={(event) => handleDrop(event, "player1")}
             onDragOver={(event) => event.preventDefault()}
           >
             {player1Hand.map((card) => (
               <div
                 key={card.id}
-                className="card bg-purple-500 w-20 text-center p-4 m-1"
                 draggable
                 onDragStart={(event) => handleDragStart(event, card, "player1")}
                 onDragEnd={(event) => event.currentTarget.style.opacity = '1'}
               >
-                {card.value}
+                <LetterCard isopen={false} letter={card.value}/>
               </div>
             ))}
           </div>
           <div
-            className="game-table flex flex-row border p-2 my-1 border-2 border-cyan-500"
+            className="game-table flex flex-row border p-2 my-1 border border-cyan-500"
             onDrop={(event) => handleDrop(event, "table")}
             onDragOver={(event) => event.preventDefault()}
           >
             {table.map((card) => (
               <div key={card.id}
-                className="card bg-purple-500 w-20 text-center p-4 m-1"
                 draggable
                 onDragStart={(event) => handleDragStart(event, card, "table")}
                 onDragEnd={(event) => event.currentTarget.style.opacity = '1'}
               >
-                {card.value}
+                <LetterCard isopen={true} letter={card.value}/>
               </div>
             ))}
           </div>
           <div
-            className="hand flex flex-row border-2 border-cyan-500 p-2"
+            className="hand flex flex-row border border-cyan-500 p-2"
             onDrop={(event) => handleDrop(event, "player2")}
             onDragOver={(event) => event.preventDefault()}
           >
             {player2Hand.map((card) => (
               <div
                 key={card.id}
-                className="card bg-purple-500 w-20 text-center p-4 m-1"
                 draggable
                 onDragStart={(event) => handleDragStart(event, card, "player2")}
                 onDragEnd={(event) => event.currentTarget.style.opacity = '1'}
               >
-                {card.value}
+                <LetterCard isopen={true} letter={card.value}/>
               </div>
             ))}
           </div>

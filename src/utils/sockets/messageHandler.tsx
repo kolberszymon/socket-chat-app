@@ -1,6 +1,7 @@
 export default (io, socket) => {
   const updateGame = (msg) => {
-    console.log(socket.id, ' : ', msg);
+    //console.log(socket.id, ' : ', msg); 
+    msg.id = socket.id;
     socket.broadcast.emit("inGameState", msg);
   };
 

@@ -83,7 +83,7 @@ export function convertDoubleLettersToPlaceholders(word) {
     return wordWithPlaceHolders
 }
 
-export function getRandomCart(n = 1) {
+export function getRandomCard(n = 1) {
     const letters = Object.keys(WORD_SCORES);
     const result = [];
     const getRandomValue = () => {
