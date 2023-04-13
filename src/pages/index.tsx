@@ -53,7 +53,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex items-center p-4 mx-auto min-h-screen justify-center flex-wrap bg-purple-500">
+    <div className="flex items-center p-4 mx-auto min-h-screen justify-center flex-wrap">
       <Link href='/game'><button className="bg-white rounded-md px-4 py-2 text-xl">Game</button></Link>
       <main className="gap-4 flex flex-col items-center justify-center w-full h-full">
         {!chosenUsername ? (
