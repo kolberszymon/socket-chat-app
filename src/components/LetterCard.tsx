@@ -5,7 +5,7 @@ export default function LetterCard({ letter, isopen }) {
     const largeLetters = ['z', 'w', 't', 'm'];
     const score = WORD_SCORES[letter];
     return (
-        <div className="flex flex-col justify-between h-52 w-36 bg-white rounded-sm text-black shadow-2xl m-1 p-1">
+        <div className="flex flex-col justify-between h-52 w-36 bg-white rounded-sm text-black shadow-2xl m-1 px-1">
             {isopen ? (<>
             <div className="flex flex-col uppercase card-letter-font">
                 <span className="text-2xl p-1 pb-0">{letter}</span>
